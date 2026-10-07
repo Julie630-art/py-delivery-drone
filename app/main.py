@@ -9,19 +9,19 @@ class BaseRobot:
         self.weight = weight
         self.coords = coords if coords is not None else [0, 0]
 
-    def go_forward(self, step=1):
+    def go_forward(self, step=1) -> None:
         self.coords[1] += step
 
-    def go_back(self, step=1):
+    def go_back(self, step=1) -> None:
         self.coords[1] -= step
 
-    def go_left(self, step=1):
+    def go_left(self, step=1) -> None:
         self.coords[0] -= step
 
-    def go_right(self, step=1):
+    def go_right(self, step=1) -> None:
         self.coords[0] += step
 
-    def get_info(self):
+    def get_info(self) -> None:
         return f"Robot: {self.name}, Weight: {self.weight}"
 
 
@@ -61,7 +61,7 @@ class DeliveryDrone(FlyingRobot):
         self.current_load = None
         self.hook_load(current_load)
 
-    def hook_load(self, cargo):
+    def hook_load(self, cargo) -> None:
         if (
             cargo is not None
             and self.current_load is None
@@ -69,5 +69,5 @@ class DeliveryDrone(FlyingRobot):
         ):
             self.current_load = cargo
 
-    def unhook_load(self):
+    def unhook_load(self) -> None:
         self.current_load = None
